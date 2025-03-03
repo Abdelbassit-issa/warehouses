@@ -1,12 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:warehouses/controllers/dash_board/cubit/dash_board_cubit.dart';
 import 'package:warehouses/models/user_profile.dart';
 import 'package:warehouses/repos/connections/.keys.dart';
 import 'package:warehouses/repos/connections/root_conn.dart';
-import 'package:warehouses/repos/login/logic/cubit/login_cubit.dart';
+import 'package:warehouses/controllers/login/logic/cubit/login_cubit.dart';
 import 'package:warehouses/sand-box/log_test.dart';
 import 'package:warehouses/view/login_page/login.dart';
+import 'package:warehouses/view/warehouse_dash_board/dash_board.dart';
 
 final class AppRouter {
   static late final GoRouter goRouter;
@@ -42,11 +44,16 @@ final class AppRouter {
       ),
 
       GoRoute(
-        path: "/LogTest",
-        name: "LogTest",
+        path: "/WarehouseDashBoard",
+        name: "WarehouseDashBoard",
         builder:
-            (context, state) =>
-                LogTest(userProfile: state.extra as UserProfileModel),
+            (context, state) => MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (context) => DashBoardCubit()),
+                // BlocProvider(create: (context) => SubjectBloc()),
+              ],
+              child: WarehouseDashBoard(),
+            ),
       ),
 
       // // Helper widget for Warehouse Dashboard

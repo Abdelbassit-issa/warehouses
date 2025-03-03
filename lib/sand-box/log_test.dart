@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:warehouses/models/user_profile.dart';
 
 class LogTest extends StatefulWidget {
-  final UserProfileModel userProfile;
+  final Map<String, dynamic> userProfile;
   const LogTest({super.key, required this.userProfile});
 
   @override
@@ -13,15 +12,19 @@ class _LogTestState extends State<LogTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Text(widget.userProfile.name),
-          const SizedBox(height: 16),
-          Text(widget.userProfile.email),
-          const SizedBox(height: 16),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(widget.userProfile['name']),
+            const SizedBox(height: 16),
+            Text(widget.userProfile['phone_number']),
+            const SizedBox(height: 16),
 
-          Text(widget.userProfile.phoneNumber),
-        ],
+            Text(widget.userProfile['id_number']),
+          ],
+        ),
       ),
     );
   }

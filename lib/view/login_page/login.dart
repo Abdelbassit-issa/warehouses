@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:warehouses/constants/emuns.dart';
-import 'package:warehouses/repos/login/logic/cubit/login_cubit.dart';
+import 'package:warehouses/controllers/login/logic/cubit/login_cubit.dart';
 import 'package:warehouses/widgets/prograss_indecator.dart';
 
 class Login extends StatefulWidget {
@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
           child: BlocConsumer<LoginCubit, LoginState>(
             listener: (context, state) {
               if (state.credentialState == UserCredentialsState.userLoggedIn) {
-                context.go('/LogTest', extra: state.userProfileModel );
+                context.go('/WarehouseDashBoard');
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(

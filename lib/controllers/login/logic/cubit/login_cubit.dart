@@ -2,11 +2,10 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:warehouses/repos/login/logic/login_user.dart';
+import 'package:warehouses/controllers/login/logic/login_user.dart';
 
 import '../../../../constants/emuns.dart';
-import '../../../../models/user_profile.dart';
-import '../../../connections/root_conn.dart';
+import '../../../../repos/connections/root_conn.dart';
 
 part 'login_state.dart';
 
@@ -27,11 +26,11 @@ class LoginCubit extends Cubit<LoginState> {
       );
       if (user != null) {
         Map<String, dynamic> userData = await _getUserDetails(user.id);
-        final userProfile = UserProfileModel.fromMap(userData);
+        // final userProfile = UserProfileModel.fromMap(userData);
         emit(
           state.copyWith(
             credentialState: UserCredentialsState.userLoggedIn,
-            userProfileModel: userProfile,
+            userProfileModel: userData,
           ),
         );
       }

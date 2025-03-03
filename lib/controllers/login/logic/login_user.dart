@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:warehouses/repos/connections/root_conn.dart';
-import 'package:warehouses/repos/login/login_repo.dart';
+import 'package:warehouses/repos/login_repo.dart';
 
 class SigninUser implements AuthRepo {
   @override

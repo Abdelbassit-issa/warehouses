@@ -7,25 +7,18 @@ final class LoginState extends Equatable {
     required this.userProfileModel,
   });
   final UserCredentialsState credentialState;
-  final UserProfileModel userProfileModel;
+  final Map<String ,dynamic> userProfileModel;
 
   factory LoginState.initial() => LoginState(
     credentialState: UserCredentialsState.invalidCredentials,
-    userProfileModel: UserProfileModel(
-      email: '',
-      idNumber: '',
-      name: '',
-      phoneNumber: '',
-      role: Role.initalUser,
-      userID: '',
-    ),
+    userProfileModel: {}
   );
   @override
   List<Object> get props => [credentialState, userProfileModel];
 
   LoginState copyWith({
     UserCredentialsState? credentialState,
-    UserProfileModel? userProfileModel,
+    Map<String ,dynamic>? userProfileModel,
   }) {
     return LoginState(
       credentialState: credentialState ?? this.credentialState,

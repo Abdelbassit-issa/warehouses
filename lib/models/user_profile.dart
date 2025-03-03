@@ -6,14 +6,14 @@ import 'package:warehouses/constants/emuns.dart';
 class UserProfileModel {
   String userID;
   String name;
-  String email;
+
   String phoneNumber;
   Role role;
   String idNumber;
 
   UserProfileModel({
     required this.name,
-    required this.email,
+
     required this.phoneNumber,
     required this.role,
     required this.idNumber,
@@ -25,7 +25,7 @@ class UserProfileModel {
     return UserProfileModel(
       userID: '',
       name: '',
-      email: '',
+
       phoneNumber: '',
       role: Role.initalUser,
       idNumber: '',
@@ -34,7 +34,7 @@ class UserProfileModel {
   UserProfileModel copyWith({
     String? userID,
     String? name,
-    String? email,
+
     String? phoneNumber,
     Role? role,
     String? idNumber,
@@ -42,7 +42,7 @@ class UserProfileModel {
     return UserProfileModel(
       userID: userID ?? this.userID,
       name: name ?? this.name,
-      email: email ?? this.email,
+
       phoneNumber: phoneNumber ?? this.phoneNumber,
       role: role ?? this.role,
       idNumber: idNumber ?? this.idNumber,
@@ -53,7 +53,7 @@ class UserProfileModel {
     return <String, dynamic>{
       'userID': userID,
       'name': name,
-      'email': email,
+
       'phoneNumber': phoneNumber,
       'role': role,
       'idNumber': idNumber,
@@ -62,11 +62,11 @@ class UserProfileModel {
 
   factory UserProfileModel.fromMap(Map<String, dynamic> map) {
     return UserProfileModel(
-      userID: map['userID'],
+      userID: map['id'],
       name: map['name'] as String,
-      email: map['email'] as String,
-      phoneNumber: map['phone_umber'] as String,
-      role: map['role'] as Role,
+
+      phoneNumber: map['phone_number'] as String,
+      role: map['role'] as dynamic,
       idNumber: map['id_number'] as String,
     );
   }
@@ -78,7 +78,7 @@ class UserProfileModel {
 
   @override
   String toString() {
-    return 'UserProfileModel(name: $name, email: $email, phoneNumber: $phoneNumber, role: $role, idNumber: $idNumber)';
+    return 'UserProfileModel(name: $name, phoneNumber: $phoneNumber, role: $role, idNumber: $idNumber)';
   }
 
   @override
@@ -86,7 +86,7 @@ class UserProfileModel {
     if (identical(this, other)) return true;
 
     return other.name == name &&
-        other.email == email &&
+       
         other.phoneNumber == phoneNumber &&
         other.role == role &&
         other.idNumber == idNumber;
@@ -95,7 +95,7 @@ class UserProfileModel {
   @override
   int get hashCode {
     return name.hashCode ^
-        email.hashCode ^
+
         phoneNumber.hashCode ^
         role.hashCode ^
         idNumber.hashCode;
