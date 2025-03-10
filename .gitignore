@@ -32,7 +32,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-/lib/repos/connections/.keys.dart
+# /lib/repos/connections/.keys.dart
 # Symbolication related
 app.*.symbols
 
